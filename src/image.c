@@ -239,6 +239,7 @@ image **load_alphabet()
 void draw_detections(image im, detection *dets, int num, float thresh, char **names, image **alphabet, int classes)
 {
     int i,j;
+	char prob_str[20];
 
     for(i = 0; i < num; ++i){
         char labelstr[4096] = {0};
@@ -250,9 +251,11 @@ void draw_detections(image im, detection *dets, int num, float thresh, char **na
                     class = j;
                 } else {
                     strcat(labelstr, ", ");
-                    strcat(labelstr, names[j]);
+					strcat(labelstr, names[j]);
                 }
                 printf("%s: %.0f%%\n", names[j], dets[i].prob[j]*100);
+				sprintf(prob_str, " %d%%", (int)(dets[i].prob[j]*100));
+				strcat(labelstr, prob_str);
             }
         }
         if(class >= 0){

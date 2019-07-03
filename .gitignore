@@ -24,4 +24,10 @@ darknet
 ehthumbs.db
 Icon?
 Thumbs.db
-*.swp
+*.sw?
+*.lst
+libdarknet.a
+libdarknet.so
+*.weights
+
+
